@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -22,8 +23,8 @@ app.add_middleware(
 # ==========================================
 SENDER_EMAIL = "caredeck5@gmail.com"  
 # Fixed: Gmail requires no spaces in the App Password!
-SENDER_PASSWORD = "ihwj jxen fyrr dcdm"  
-GEMINI_API_KEY = "AIzaSyDG60xtyeYChv1MoShS4ALfqG_QnolbFLM"
+SENDER_PASSWORD =os.getenv("SENDER_PASSWORD") 
+GEMINI_API_KEY =os.getenv("GEMINI_API_KEY")
 
 # Initialize the new 2026 Google GenAI Client
 client = genai.Client(api_key=GEMINI_API_KEY)
